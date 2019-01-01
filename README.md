@@ -1,5 +1,5 @@
 # aladdin-connect
-Python module that allows interacting with Genie Aladdin Connect devices
+Python module that allows interacting with Genie Aladdin Connect devices for use with AWS lambda
 
 Note that shared doors are not currently supported, only doors that are owned by your account can be controlled
 
