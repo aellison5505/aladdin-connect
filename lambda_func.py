@@ -1,17 +1,22 @@
 import json
-from aladdin_connect import AladdinConnectClient
+from lamda_bridge import lambda_bridge
 
 def lambda_handler(event, context):
     print(event)
-    client = AladdinConnectClient(event['user'], event['passwd'])
-    client.login()
-    token = client.get_token()
-    print('Token: {}'.format(token))
-
-    # Or load token
-    #client.load(token)
+    bridge = lambda_bridge(event['user'], event['passwd'])
+    switch = {
+        "login": "bridge.login()",
+        "load": "bridge.load(event['init_token'])",
+        "get_token": "bridge.get_token()",
+        "get_doors": "bridge.get_doors()",
+        "get_door_status": "bridge.status(event['door_id'], event['door'], event['portal'])"
+    }
+    #login or load
+    ret = eval(switch.get(event['init']))
+    #run command
+    cmd_ret = eval(switch.get(event['cmd']))
     
     return {
         'statusCode': 200,
-        'body': "Token {}".format(token.strip('"'))
+        'body': "{}".format(cmd_ret)
     }

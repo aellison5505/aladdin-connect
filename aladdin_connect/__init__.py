@@ -73,9 +73,13 @@ class AladdinConnectClient:
     def get_token(self):
         return self._session._auth_token
 
+    def set_device_protal(self, portal, device_id):
+        self._device_portal[device_id] = portal
+        return True
+
     def get_doors(self):
         devices = self._get_devices()
-
+        #print('devices: {}'.format(devices))
         doors = []
 
         if devices:
@@ -122,10 +126,11 @@ class AladdinConnectClient:
                 # save portal id in dict by device id, no need to expose this to users
                 self._device_portal[device_id] = portal_id
                 devices.append({
+                    'portal_id': portal_id,
                     'device_id': device_id,
                     'doors': self._get_doors_for_device(device_id)
                 })
-
+        print(self._device_portal)
         return devices
 
     def _get_doors_for_device(self, device_id):
