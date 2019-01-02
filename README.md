@@ -27,8 +27,7 @@ client.open_door(my_door['device_id'], my_door['door_number'])
 # Get updated door status
 client.get_door_status(my_door['device_id'], my_door['door_number'])
 
-#lambda_test
-test_lambda.py username password token
-ex. test_lambda.py test@test.net abc123 None
-ex. test_lambda.py test@test.net None 12324abca
+#lambda_test set envs
+test_lambda.py 
+
 ```
