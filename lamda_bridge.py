@@ -26,3 +26,17 @@ class lambda_bridge:
         door_status = self._client.get_door_status(device, door)
         return door_status
 
+    def open(self, device, door, portal):
+        doors = self._client.set_device_protal(portal, device)
+        self._client.open_door(device, door)
+        door_status = self._client.get_door_status(device, door)
+        return door_status
+
+    def close(self, device, door, portal):
+        doors = self._client.set_device_protal(portal, device)
+        self._client.close_door(device, door)
+        door_status = self._client.get_door_status(device, door)
+        return door_status
+    
+
+
