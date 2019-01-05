@@ -9,7 +9,7 @@ def lambda_handler(event, context):
         "load": "bridge.load(event['init_token'])",
         "get_token": "bridge.get_token()",
         "get_doors": "bridge.get_doors()",
-        "get_door_status": "bridge.status(event['door_id'], event['door'], event['portal'])",
+        "get_status": "bridge.status(event['door_id'], event['door'], event['portal'])",
         "open_door": "bridge.open(event['door_id'], event['door'], event['portal'])",
         "close_door": "bridge.close(event['door_id'], event['door'], event['portal'])"
     }

@@ -15,6 +15,8 @@ event = {
 
 }
 
+print(event)
+
 context = {}
 
 ret = lambda_handler(event, context)
